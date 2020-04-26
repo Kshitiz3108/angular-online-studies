@@ -1,0 +1,47 @@
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white" id="sidebar">
+     <div class="py-4 px-3 mb-4 bg-light">
+      <div class="media d-flex align-items-center">
+        <div class="media-body">
+          <h4 class="m-0">Welcome {{i}}</h4>
+        </div>
+      </div>
+    </div>
+  
+    <ul class="nav flex-column bg-white mb-0">
+      <li class="nav-item">
+        <a routerLink="../admin/user-verify" router class="nav-link text-dark font-italic">
+                  <i class="fa fa-users mr-3 text-primary fa-fw"></i>
+                  Verify User
+              </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="../admin/add-subject" router class="nav-link text-dark font-italic">
+                  <i class="fa fa-users mr-3 text-primary fa-fw"></i>
+                  Add Subject
+              </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin/change-password" class="nav-link text-dark font-italic">
+                  <i class="fa fa-lock mr-3 text-primary fa-fw"></i>
+                  Change Password
+              </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin-register" class="nav-link text-dark font-italic">
+                  <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
+                  Logout
+              </a>
+      </li>
+    </ul>
+  </div>
+  <!-- End vertical navbar -->
+  
+  
+  <!-- Page content holder -->
+  <div class="page-content p-5" id="content">  
+  <div>  
+    <router-outlet class="justify-content-center"></router-outlet>  
+  </div>
+     
+    </div>

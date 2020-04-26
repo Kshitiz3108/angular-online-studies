@@ -1,0 +1,74 @@
+<div class="menu-content">
+  <div [hidden]="submitted" class="content">
+    <div class="jumbotron">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+              <h2>Add Subject</h2>
+          </div>
+          <div class="panel-body">
+              <form (ngSubmit)="subadd(a1,a2,a3);myForm.reset()" #myForm="ngForm" ngNativeValidate>
+                  <label>
+                      Class: 
+                      <select [(ngModel)]="a1" name="classstd" required>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                      </select>
+                  </label><br>
+                  <label>
+                      Subject Name:
+                      <input type="text" placeholder="Enter subject name" [(ngModel)]="a2" name="subjectname" required />
+                  </label><br>
+                  <span>Choose your Optional Subject: </span>
+                  <select [(ngModel)]="a3" name="role" required>
+                      <option>Yes</option>
+                      <option>No</option>
+                  </select><br>
+                  <button id="signup" type="submit">Sign Up</button>
+                  
+              </form>
+          </div>
+      </div>
+  </div>
+   <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Subject List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Name</th>
+            <th>Optional(Yes/No)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Subject of Subjects">
+            <td>{{Subject.ClassStd}}</td>
+            <td>{{Subject.SubjectName}}</td>
+            <td>{{Subject.OptionalSubject}}</td>
+            <td><button (click)="rejectSubject(Subject.ClassStd,Subject.SubjectName,Subject.OptionalSubject)" class="btn btn-danger">Reject</button></td>
+          </tr>
+        </tbody>
+      </table>
+     <button (click)="submitSubject()" id="ads" type="submit">send Up</button>
+    </div>
+  </div> 
+  </div>
+  <div [hidden]="!submitted" class="content">
+    <h4>You submitted successfully!</h4>
+    <br>
+    <button (click)="list()" class="btn btn-primary">Back to User List</button><br>
+  </div>
+</div>
