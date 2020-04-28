@@ -15,6 +15,7 @@ import { StudentDataComponent } from './student-data/student-data.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AddSubjectComponent } from './add-subject/add-subject.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StorageServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

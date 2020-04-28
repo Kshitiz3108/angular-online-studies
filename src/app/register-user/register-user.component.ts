@@ -7,6 +7,7 @@ import * as $ from "jquery";
 import {FormControl,FormGroup,Validators} from '@angular/forms';
 import { UserService } from '../user.service';
 import { LoginServiceService } from '../login-service.service';
+import { SessionServiceService } from '../session-service.service';
 
 @Component({
   selector: 'app-register-user',
@@ -22,7 +23,7 @@ export class RegisterUserComponent implements OnInit {
   signupvisibility:boolean;
   loginvisibility:boolean;
   loginresponse:Object;
-  constructor(private route:Router,private userService:UserService,private loginService:LoginServiceService) { }
+  constructor(private route:Router,private userService:UserService,private loginService:LoginServiceService,private session:SessionServiceService) { }
 
   ngOnInit(): void {
     const signUpButton = document.getElementById('signUp');
@@ -70,8 +71,10 @@ export class RegisterUserComponent implements OnInit {
         this.loginresponse=data;
         this.loginvisibility=true;
         this.loginmessage=this.loginService.printer(this.loginresponse);
-        if(this.loginmessage=="Student-login"||this.loginmessage=="Teacher-login"){
-          this.loginService.user=this.loginuser;
+        if(this.loginmessage=="Student-login"||this.loginmessage==="Teacher-login"){
+          console.log("sda");
+          this.session.set('user-id',this.loginuser.userId);
+          this.route.navigate(['../teacher-data']);
         }
         if(this.loginmessage=="Student-login"){
           

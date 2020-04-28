@@ -12,7 +12,6 @@ export class AdminService {
 
   Sub:Subject[]=[];
 
-
   constructor(private http:HttpClient) { }
 
   listUser(): Observable<any>{

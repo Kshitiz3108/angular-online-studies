@@ -6,6 +6,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
+import { TeacherDataComponent } from './teacher-data/teacher-data.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   {path:'register-user',component:RegisterUserComponent},
   {path:'admin-register',component:AdminRegisterComponent},
+  {path:'teacher-data',component:TeacherDataComponent}
 ];
 
 @NgModule({

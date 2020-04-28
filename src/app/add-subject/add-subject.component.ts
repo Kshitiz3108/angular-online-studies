@@ -28,10 +28,6 @@ export class AddSubjectComponent implements OnInit {
     this.submitted=false;
   }
 
-  rough(){
-    console.log("dsa"); 
-  }
-
   subadd(c,k,p){
     this.Subjects[this.i]=new Subject();
     this.Subjects[this.i].ClassStd=c;
