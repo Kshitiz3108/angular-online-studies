@@ -3,6 +3,7 @@ import { Subject } from '../subject';
 import { Observable } from 'rxjs';
 import { SubjectService } from '../subject.service';
 import { SessionServiceService } from '../session-service.service';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-teacher-data',
@@ -12,17 +13,22 @@ import { SessionServiceService } from '../session-service.service';
 export class TeacherDataComponent implements OnInit {
 
   Subjects:Subject[]=[];
+  subs:Subject=new Subject();
   a1:String;
   a2:String;
   a3:String;
+  a4:Number;
+  
+  addResponse:Object;
   i=0;
   count=0;
   sub:Subject=new Subject();
+  subj:Subject=new Subject();
   Subavailable:Observable<Subject>;
-  constructor(private subjectService:SubjectService,private sessions:SessionServiceService) { }
+  constructor(private subjectService:SubjectService,private sessions:SessionServiceService,private adminservice:AdminService) { }
 
   ngOnInit(): void {
-    console.log(this.sessions.get('user-id'));
+    console.log(sessionStorage.getItem('user-id'));
   }
 
   subadd(c,k){
@@ -36,19 +42,19 @@ export class TeacherDataComponent implements OnInit {
     this.sub.ClassStd=a;
     this.sub.SubjectName=b;
     this.count=this.Subjects.indexOf(this.sub);
+    console.log(this.Subjects);
     this.Subjects.splice(this.count,1);
   }
 
+
   onChange(classValue) {
     this.Subavailable=this.subjectService.listSubject(classValue);
-    console.log(this.subjectService.listSubject(classValue));
   }
 
   submitSubject(){
     var j=this.Subjects.length;
-    console.log(j);
     if(j>3){
-      var threeconfirm=confirm("Only first 3 subjects will be only submitted");
+      var threeconfirm=confirm("Only first 3 subjects will be only submitted ");
       console.log(threeconfirm);
       if(threeconfirm){
         for(var k=3;k<j;k++){
@@ -57,7 +63,15 @@ export class TeacherDataComponent implements OnInit {
       }
     }
     else{
-      console.log("vhhj");
+      this.adminservice.submitTSubjects(this.Subjects).
+      subscribe(
+        (data)=>
+          {
+            data;
+            this.addResponse=data;
+            alert(this.addResponse);
+          }
+        )
     }
   }
 }

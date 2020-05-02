@@ -16,6 +16,7 @@ import { SessionServiceService } from '../session-service.service';
 })
 export class RegisterUserComponent implements OnInit {
 
+  s:string="";
   signupuser:User=new User();
   loginuser:User=new User();
   signupmessage:String="";
@@ -72,8 +73,7 @@ export class RegisterUserComponent implements OnInit {
         this.loginvisibility=true;
         this.loginmessage=this.loginService.printer(this.loginresponse);
         if(this.loginmessage=="Student-login"||this.loginmessage==="Teacher-login"){
-          console.log("sda");
-          this.session.set('user-id',this.loginuser.userId);
+          sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username+"-"+this.loginuser.password));
           this.route.navigate(['../teacher-data']);
         }
         if(this.loginmessage=="Student-login"){

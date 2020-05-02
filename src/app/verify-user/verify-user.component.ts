@@ -26,8 +26,6 @@ export class VerifyUserComponent implements OnInit {
     )
   }
 
-  
-
   loadData(){
     this.Users=this.adminService.listUser();
     console.log(this.Users);

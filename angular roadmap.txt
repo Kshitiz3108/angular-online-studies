@@ -1,0 +1,59 @@
+ENABLE STUDENT OF EACH SCHOOL TO GET ACCESS DOWNLOAD THE STUDY MATERIAL UPLOADED BY TEACHER ( IOS, ANDROID, WEBSITE)
+
+**NOTES**
+1. SYSTEM OF EACH SCHOOL IS DIFFERENT 
+2. NO COSTING OF USERS COSTING FROM SCHOOL UPON THEIR USAGE (monthly costing will be provided)
+3. If using android app, the costing will be higher.
+
+There are 4 type of users
+1. Super-admin (only principal)
+2. Admin ( any number )
+3. Teacher ( any number)
+4. Student ( any number)
+
+for teacher and student
+-> login and signup url : http://localhost:4200/register-users
+
+for admin
+-> login and signup url : http://localhost:4200/admin-register
+
+every user ( except principal ) needs to be verified before he/she can login
+-> admin will verify student and teacher ( according to their name,id and role)
+-> principal will verify admin ( according to their name,id and role)
+
+admin: 
+Role-{
+1. verify teacher and student 
+2. add subject for the school 
+3. change password for each user request
+}
+
+task of teacher:
+-after login they will choose the class and subject(subject added by admin is only options available). can choose only upto 3 class and subject 
+-can access discussion of of there subject
+-only one teacher can add the study material ( not our problem who will enter)
+Role-{
+1. add chapter to each subject he/she teacher
+2. add study material to each chapter 
+3. access the discussion of each subject 
+}
+
+task of student:
+-after login they will choose their class and subject (only optional subject ) if subject is not optional they cannot choose
+-can access discussion of their subject only
+ROle-{
+1. can access subject study material ( download or view depending upon plan )
+2. can access the discussion page ( post )
+}
+
+-----------FOR ALL USER-------------
+1. any user except admin forget password can request to change password from admin ( request of admin will be done by us )
+2. 5 minutes inactivity session to be implemented 
+3. SSO ( single sign on ) will be implemented meaning a single user can only ony login through a credential
+4. Once rejected the user needs to resend their profile for verification within 48 hrs
+5. trying to develop two apps ( one with video certainly of cost and another one with pdf or file upload lower cost)
+6. All screens ( any user ) can be access only if user is login
+7. User automatically logs out if he/she closes the tab
+
+
+

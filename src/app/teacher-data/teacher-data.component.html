@@ -26,8 +26,10 @@
                         </select>
                     </label><br>
                     <label>
-                        Subject Name:
-                        <select ng-options="Subject as (SubjectName|upper) for Subject in Subavailable">
+                      <!-- -->
+                        Subject :
+                        <select [(ngModel)]="a2" name="subs" >
+                           <option *ngFor="let subject of Subavailable|async" value="{{subject.subjectName}}">{{subject.subjectName}}</option> 
                         </select>
                     </label><br>
                     <button id="signup" type="submit">Sign Up</button>

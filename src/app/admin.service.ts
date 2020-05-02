@@ -8,10 +8,8 @@ import {Subject} from './subject';
 })
 export class AdminService {
 
-  private baseUrl="http://localhost:8322/admin/";
-
+  private baseUrl="http://192.168.1.105:8322/admin/";
   Sub:Subject[]=[];
-
   constructor(private http:HttpClient) { }
 
   listUser(): Observable<any>{
@@ -29,4 +27,9 @@ export class AdminService {
   submitSubjects(Subjects:Object):Observable<any>{
     return this.http.post(`${this.baseUrl}`+'subjects-submit',JSON.stringify(Subjects),{responseType:'text'});
   }
+
+  submitTSubjects(Subjects:Object):Observable<any>{
+    return this.http.post(`${this.baseUrl}`+'subjects-teacher-submit',JSON.stringify(Subjects),{responseType:'text'});
+  }
+
 }
