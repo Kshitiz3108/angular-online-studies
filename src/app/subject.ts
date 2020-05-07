@@ -1,7 +1,6 @@
 export class Subject {
-    Subjectid:String="";
-    ClassStd:String="";
-    SubjectName:String="";
-    OptionalSubject:String="";
+    classStd:String="";
+    subjectName:String="";
+    optionalSubject:String="";
  
 }

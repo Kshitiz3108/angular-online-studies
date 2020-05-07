@@ -28,8 +28,6 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}`+'subjects-submit',JSON.stringify(Subjects),{responseType:'text'});
   }
 
-  submitTSubjects(Subjects:Object):Observable<any>{
-    return this.http.post(`${this.baseUrl}`+'subjects-teacher-submit',JSON.stringify(Subjects),{responseType:'text'});
-  }
+  
 
 }

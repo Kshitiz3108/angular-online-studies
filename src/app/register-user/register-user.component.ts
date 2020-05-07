@@ -65,6 +65,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   onlogin(){
+    console.log(this.loginuser.username)
     this.userService.loginUser(this.loginuser).
     subscribe(
       (data)=>
@@ -72,12 +73,13 @@ export class RegisterUserComponent implements OnInit {
         this.loginresponse=data;
         this.loginvisibility=true;
         this.loginmessage=this.loginService.printer(this.loginresponse);
-        if(this.loginmessage=="Student-login"||this.loginmessage==="Teacher-login"){
-          sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username+"-"+this.loginuser.password));
+        if(this.loginmessage==="Teacher-login"){
+          sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username));
           this.route.navigate(['../teacher-data']);
         }
-        if(this.loginmessage=="Student-login"){
-          
+        if(this.loginmessage==="Student-login"){
+          sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username));
+          this.route.navigate(['../student-data']);
         }
       }
     )

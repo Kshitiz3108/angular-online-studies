@@ -27,7 +27,7 @@
                   </label><br>
                   <label>
                       Subject Name:
-                      <input type="text" placeholder="Enter subject name" [(ngModel)]="a2" name="subjectname" required />
+                      <input type="text" placeholder="Enter subject name" [(ngModel)]="a2" name="subjectName" required />
                   </label><br>
                   <span>Choose your Optional Subject: </span>
                   <select [(ngModel)]="a3" name="role" required>
@@ -56,9 +56,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let Subject of Subjects">
-            <td>{{Subject.ClassStd}}</td>
-            <td>{{Subject.SubjectName}}</td>
-            <td>{{Subject.OptionalSubject}}</td>
+            <td>{{Subject.classStd}}</td>
+            <td>{{Subject.subjectName}}</td>
+            <td>{{Subject.optionalSubject}}</td>
             <td><button (click)="rejectSubject(Subject.ClassStd,Subject.SubjectName,Subject.OptionalSubject)" class="btn btn-danger">Reject</button></td>
           </tr>
         </tbody>

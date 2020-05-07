@@ -1,72 +1,91 @@
 <div class="menu-content">
-    <div class="content">
-      <div class="jumbotron">
-        <div class="panel panel-primary">
-          =
-            <div class="panel-heading">
-                <h2>Add Subject</h2>
-            </div>
-            <div class="panel-body">
-                <form (ngSubmit)="subadd(a1,a2);myForm.reset()" #myForm="ngForm" ngNativeValidate>
-                    <label>
-                        Class: 
-                        <select [(ngModel)]="a1" name="classstd" (change)="onChange($event.target.value)" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                        </select>
-                    </label><br>
-                    <label>
-                      <!-- -->
-                        Subject :
-                        <select [(ngModel)]="a2" name="subs" >
-                           <option *ngFor="let subject of Subavailable|async" value="{{subject.subjectName}}">{{subject.subjectName}}</option> 
-                        </select>
-                    </label><br>
-                    <button id="signup" type="submit">Sign Up</button>
-                    
-                </form>
-            </div>
-        </div>
-    </div>
-     <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h2>Subject List</h2>
-      </div>
-      <div class="panel-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Class</th>
-              <th>Name</th>
+  <div class="content">
+    <div class="jumbotron">
+      <div class="panel panel-primary">
+        =
+          <div class="panel-heading">
+              <h2>Add Subject</h2>
+          </div>
+          <div class="panel-body">
+              
+                  <label>
+                      Class: 
+                      <select [(ngModel)]="a1" name="classstd" (change)="onChange($event.target.value)" required>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                      </select>
+                  </label><br>
 
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let Subject of Subjects">
-              <td>{{Subject.ClassStd}}</td>
-              <td>{{Subject.SubjectName}}</td>
-              <td><button (click)="rejectSubject(Subject.ClassStd,Subject.SubjectName)" class="btn btn-danger">Reject</button></td>
-            </tr>
-          </tbody>
-        </table>
-       <button (click)="submitSubject()" id="ads" type="submit">send Up</button>
-      </div>
-    </div> 
-    </div>
-    <div  class="content">
-      <h4>You submitted successfully!</h4>
-      <br>
-    </div>
-  </div>
+                  <form [formGroup]="form" (ngSubmit)="subjectSubmit()" >
   
+                    <ng-multiselect-dropdown #multiSelect
+                      name="subs"
+                      [placeholder]="'Select your subject'" 
+                      [data]="SubjectAvailable" 
+                      [formControl]="f.name" 
+                      [settings]="settings"
+                      [disabled]="isdisabled"
+                      (onSelect)="onItemSelect($event)" 
+                      (onDeSelect)="onDeSelect($event)"
+                      (onSelectAll)="onSelectAll($event)"
+                      (onDeSelectAll)="onDeSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                  <br>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Class</th>
+                        <th>Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let subject of selectedItems">
+                        <td>{{subject.classStd}}</td>
+                        <td>{{subject.subjectName}}</td>
+                       </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <button id="signup" type="submit">Submit your Subjects</button>
+                  
+              </form>
+          </div>
+      </div>
+  </div>
+   <!-- <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Subject List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Name</th>
+
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Subject of Subjects">
+            <td>{{Subject.ClassStd}}</td>
+            <td>{{Subject.SubjectName}}</td>
+            <td><button  class="btn btn-danger">Reject</button></td>
+          </tr>
+        </tbody>
+      </table>
+     <button id="ads" type="submit">send Up</button>
+    </div>
+  </div>  -->
+  </div>
+</div>

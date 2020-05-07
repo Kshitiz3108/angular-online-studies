@@ -30,16 +30,16 @@ export class AddSubjectComponent implements OnInit {
 
   subadd(c,k,p){
     this.Subjects[this.i]=new Subject();
-    this.Subjects[this.i].ClassStd=c;
-    this.Subjects[this.i].SubjectName=k;
-    this.Subjects[this.i].OptionalSubject=p;
+    this.Subjects[this.i].classStd=c;
+    this.Subjects[this.i].subjectName=k;
+    this.Subjects[this.i].optionalSubject=p;
     this.i++;
   }
 
   rejectSubject(a,b,c){
-    this.sub.ClassStd=a;
-    this.sub.SubjectName=b;
-    this.sub.OptionalSubject=c;
+    this.sub.classStd=a;
+    this.sub.subjectName=b;
+    this.sub.optionalSubject=c;
     this.count=this.Subjects.indexOf(this.sub);
     console.log(this.Subjects);
     this.Subjects.splice(this.count,1);

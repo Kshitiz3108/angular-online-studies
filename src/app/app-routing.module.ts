@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterUserComponent } from './register-user/register-user.component';
-import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { AdminRegisterComponent } from './admin-register/admin-register.component';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
 import { TeacherDataComponent } from './teacher-data/teacher-data.component';
+import { StudentDataComponent } from './student-data/student-data.component';
+import { StudentMenuComponent } from './student-menu/student-menu.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,9 @@ const routes: Routes = [
   },
   {path:'register-user',component:RegisterUserComponent},
   {path:'admin-register',component:AdminRegisterComponent},
-  {path:'teacher-data',component:TeacherDataComponent}
+  {path:'teacher-data',component:TeacherDataComponent},
+  {path:'student-data',component:StudentDataComponent},
+  {path:'student-menu',component:StudentMenuComponent}
 ];
 
 @NgModule({

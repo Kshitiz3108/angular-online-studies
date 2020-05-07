@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from '../subject';
 import { Observable } from 'rxjs';
 import { SubjectService } from '../subject.service';
 import { SessionServiceService } from '../session-service.service';
 import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-teacher-data',
@@ -12,58 +14,112 @@ import { AdminService } from '../admin.service';
 })
 export class TeacherDataComponent implements OnInit {
 
-  Subjects:Subject[]=[];
-  subs:Subject=new Subject();
-  a1:String;
-  a2:String;
-  a3:String;
-  a4:Number;
-  
-  addResponse:Object;
+  @ViewChild('multiSelect') multiSelect;
+  public form: FormGroup;
+  public loadContent: boolean = false;
+  public name = 'Cricketers';
+  public SubjectAvailable : Subject[]=[];
+  public settings = {};
+  public selectedItems = [];
+  public isdisabled=false;
+  a1:String=""
+  Subjectselected:Subject=new Subject;
+  allsubcount=0;
   i=0;
-  count=0;
-  sub:Subject=new Subject();
-  subj:Subject=new Subject();
-  Subavailable:Observable<Subject>;
-  constructor(private subjectService:SubjectService,private sessions:SessionServiceService,private adminservice:AdminService) { }
+  addResponse:Object;
+  l:Number;
+  constructor(private subjectService:SubjectService,private route:Router) { }
 
   ngOnInit(): void {
-    console.log(sessionStorage.getItem('user-id'));
+    console.log(sessionStorage.length);
+    if(sessionStorage.getItem('user-id')===null){
+      alert("Please login to access")
+      this.route.navigate(['../register-user']);
+    }
+    else{
+      
+      // setting and support i18n
+      this.settings = {
+        singleSelection: false,
+        idField: 'subjectId',
+        textField: 'subjectName',
+        enableCheckAll: true,
+        selectAllText: 'Select All',
+        unSelectAllText: 'Unselect All',
+        allowSearchFilter: false,
+        limitSelection: -1,
+        clearSearchFilter: true,
+        maxHeight: 197,
+        itemsShowLimit: 3,
+        searchPlaceholderText: 'Tìm kiếm',
+        noDataAvailablePlaceholderText: 'No data',
+        closeDropDownOnSelection: false,
+        showSelectedItemsAtTop: true,
+        defaultOpen: false,
+        isdisabled:false
+      };
+      this.form = new FormGroup({
+        name: new FormControl(this.selectedItems)
+      });
+      this.loadContent = true;
+    }
   }
 
-  subadd(c,k){
-    this.Subjects[this.i]=new Subject();
-    this.Subjects[this.i].ClassStd=c;
-    this.Subjects[this.i].SubjectName=k;
-    this.i++;
+  get f() { return this.form.controls; }
+
+  public save() {
+    console.log(this.form.value);
   }
 
-  rejectSubject(a,b){
-    this.sub.ClassStd=a;
-    this.sub.SubjectName=b;
-    this.count=this.Subjects.indexOf(this.sub);
-    console.log(this.Subjects);
-    this.Subjects.splice(this.count,1);
+
+  public onItemSelect(item: Subject) {
+    item.classStd=this.a1;
+    item.optionalSubject="Yes";
+    this.selectedItems.push(item);
+  }
+  public onDeSelect(item: Subject) {
+    item.classStd=this.a1;
+    item.optionalSubject="Yes";
+    this.selectedItems.splice(this.selectedItems.indexOf(item),1);
+  }
+
+  public onSelectAll(items: any) {
+    items.forEach(Subject => {
+      Subject.classStd=this.a1;
+      this.selectedItems.push(Subject);
+    });
+    console.log(this.selectedItems);
+  }
+  public onDeSelectAll(items: any) {
+    items.forEach(subject => {
+      subject.classStd=this.a1;
+      this.selectedItems.splice(this.selectedItems.indexOf(subject),1);
+    });
   }
 
 
   onChange(classValue) {
-    this.Subavailable=this.subjectService.listSubject(classValue);
+    this.subjectService.listSubject(classValue).subscribe(
+      (data)=>
+      {
+        data;
+        this.SubjectAvailable=data;
+      }
+    )
   }
 
-  submitSubject(){
-    var j=this.Subjects.length;
+  subjectSubmit(){
+    var j=this.selectedItems.length;
     if(j>3){
       var threeconfirm=confirm("Only first 3 subjects will be only submitted ");
-      console.log(threeconfirm);
       if(threeconfirm){
         for(var k=3;k<j;k++){
-          this.Subjects.pop();
+          this.selectedItems.pop();
         }
       }
     }
     else{
-      this.adminservice.submitTSubjects(this.Subjects).
+      this.subjectService.submitTSubjects(this.selectedItems).
       subscribe(
         (data)=>
           {
