@@ -55,11 +55,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let Subject of Subjects">
-            <td>{{Subject.classStd}}</td>
-            <td>{{Subject.subjectName}}</td>
-            <td>{{Subject.optionalSubject}}</td>
-            <td><button (click)="rejectSubject(Subject.ClassStd,Subject.SubjectName,Subject.OptionalSubject)" class="btn btn-danger">Reject</button></td>
+          <tr *ngFor="let subject of Subjects">
+            <td>{{subject.classStd}}</td>
+            <td>{{subject.subjectName}}</td>
+            <td>{{subject.optionalSubject}}</td>
+            <td><button (click)="rejectSubject(subject.classStd,subject.subjectName,subject.optionalSubject)" class="btn btn-danger">Reject</button></td>
           </tr>
         </tbody>
       </table>

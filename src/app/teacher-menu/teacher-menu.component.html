@@ -6,8 +6,8 @@
 	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
 		<mat-nav-list>
 			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" *ngFor="let subject of selectedSubject">
-				<span class="full-width" *ngIf="isExpanded || isShowing">{{subject.subjectName}}</span>
-				<mat-icon mat-list-icon><i class="fa fa-book"></i></mat-icon>
+				<span class="full-width" *ngIf="isExpanded || isShowing">{{subject.classStd}}-{{subject.subjectName}}</span>
+				<mat-icon mat-list-icon>view_headline</mat-icon>
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">chevron_right</mat-icon>
 			</mat-list-item>
 			

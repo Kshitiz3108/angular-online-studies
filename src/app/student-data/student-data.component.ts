@@ -124,6 +124,7 @@ export class StudentDataComponent implements OnInit {
         {
           this.addResponse=data;
           alert(this.addResponse);
+          this.route.navigate(['../student-menu'])
         }
       )
     }

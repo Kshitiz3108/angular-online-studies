@@ -29,6 +29,7 @@ export class AddSubjectComponent implements OnInit {
   }
 
   subadd(c,k,p){
+    console.log(this.Subjects.length);
     this.Subjects[this.i]=new Subject();
     this.Subjects[this.i].classStd=c;
     this.Subjects[this.i].subjectName=k;
@@ -40,9 +41,14 @@ export class AddSubjectComponent implements OnInit {
     this.sub.classStd=a;
     this.sub.subjectName=b;
     this.sub.optionalSubject=c;
-    this.count=this.Subjects.indexOf(this.sub);
-    console.log(this.Subjects);
-    this.Subjects.splice(this.count,1);
+    console.log("ads");
+    console.log(this.sub);
+    for(this.count=0;this.count<this.Subjects.length;this.count++){
+      if(JSON.stringify(this.Subjects[this.count])===JSON.stringify(this.sub)){
+        this.Subjects.splice(this.count);
+      }
+    }
+    console.log(this.Subjects.length);
   }
 
   submitSubject(){

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private baseUrl="http://192.168.1.105:8322/user/";
+  private baseUrl="http://192.168.1.107:8322/user/";
 
   constructor(private http:HttpClient) { }
 
@@ -18,6 +18,18 @@ export class UserService {
 
   loginUser(User:Object): Observable<Object>{
     return this.http.post(`${this.baseUrl}`+'login-user',User,{responseType:'text'});
+  }
+
+  sendEmail(Username:String):Observable<any>{
+    return this.http.get(`${this.baseUrl}`+'sendEmail/'+`${Username}`,{responseType:'text'});
+  }
+
+  otpMatching(otp:String):Observable<any>{
+    return this.http.get(`${this.baseUrl}`+'verify-otp/'+`${otp}`,{responseType:'text'});
+  }
+
+  passwordChange(User:Object):Observable<any>{
+    return this.http.post(`${this.baseUrl}`+'password-change',User,{responseType:'text'});
   }
 
 }

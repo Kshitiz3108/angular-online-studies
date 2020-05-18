@@ -1,5 +1,44 @@
-<!-- Vertical navbar -->
-<div class="vertical-nav bg-white" id="sidebar">
+<mat-toolbar color="accent" class="example-toolbar">
+	<h1 class="example-app-name">Nested Menus</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+			<mat-list-item routerLink="../admin/user-verify" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Verify User</span>
+				<mat-icon mat-list-icon>view_headline</mat-icon>
+				<mat-icon class="menu-button" *ngIf="isExpanded || isShowing">chevron_right</mat-icon>
+      </mat-list-item>
+      <mat-list-item routerLink="../admin/add-subject" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Add Subject</span>
+				<mat-icon mat-list-icon>view_headline</mat-icon>
+				<mat-icon class="menu-button" *ngIf="isExpanded || isShowing">chevron_right</mat-icon>
+      </mat-list-item>
+      <mat-list-item routerLink="../admin/add-subject" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Add Chapters</span>
+				<mat-icon class="menu-button" *ngIf="isExpanded || isShowing" >chevron_right</mat-icon>
+      </mat-list-item>
+      <mat-list-item routerLink="../admin/add-subject" class="parent">
+				<span class="full-width" >Parent Menu</span>
+				<mat-icon mat-list-icon>view_headline</mat-icon>
+				<mat-icon class="menu-button"  >chevron_right</mat-icon>
+			</mat-list-item>
+		</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+    <router-outlet class="justify-content"></router-outlet> 
+	</div>
+</mat-sidenav-container>
+
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
+<!-- 
+<!- Vertical navbar -->
+<!-- <div class="vertical-nav bg-white" id="sidebar">
      <div class="py-4 px-3 mb-4 bg-light">
       <div class="media d-flex align-items-center">
         <div class="media-body">
@@ -22,7 +61,8 @@
               </a>
       </li>
       <li class="nav-item">
-        <a routerLink="/admin/change-password" class="nav-link text-dark font-italic">
+        <a routerLink="
+        /admin/change-password" class="nav-link text-dark font-italic">
                   <i class="fa fa-lock mr-3 text-primary fa-fw"></i>
                   Change Password
               </a>
@@ -35,13 +75,13 @@
       </li>
     </ul>
   </div>
-  <!-- End vertical navbar -->
+   End vertical navbar -->
   
   
   <!-- Page content holder -->
-  <div class="page-content p-5" id="content">  
+  <!-- <div class="page-content p-5" id="content">  
   <div>  
     <router-outlet class="justify-content-center"></router-outlet>  
-  </div>
-     
-    </div>
+  </div> -->
+<!--      
+    </div> --> 

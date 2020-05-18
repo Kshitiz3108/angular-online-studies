@@ -4,6 +4,7 @@ export class User {
     password:String;
     name:String;
     role:String;
+    email:String;
     student_class:String;
     subject1:String;
     subject2:String;

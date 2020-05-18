@@ -1,17 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { SubjectService } from '../subject.service';
 import { Subject } from '../subject';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { SubjectService } from '../subject.service';
 
 @Component({
-  selector: 'app-student-menu',
-  templateUrl: './student-menu.component.html',
-  styleUrls: ['./student-menu.component.css']
+  selector: 'app-teacher-menu',
+  templateUrl: './teacher-menu.component.html',
+  styleUrls: ['./teacher-menu.component.css']
 })
-export class StudentMenuComponent {
+export class TeacherMenuComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
   isExpanded = true;
@@ -47,5 +45,4 @@ export class StudentMenuComponent {
       }
     )
   }
-
 }

@@ -9,26 +9,38 @@ export class LoginServiceService {
   user:User;
   constructor(){
   }
-  printer(stu:Object){
-    stri:String;
-    console.log(stu);
-    if(stu==1){
+  printer(loginString:Object){
+    loginString:String;
+    if(loginString==1){
       return "Username not registered";
     }
-    if(stu==2){
-      return "Student-login";
+    if(loginString==2){
+      return "Student-first-login";
     }
-    if(stu==3){
-      return "Teacher-login";
+    if(loginString==3){
+      return "Teacher-first-login";
     }
-    if(stu==4){
+    if(loginString==4){
       return "Admin-login";
     }
-    if(stu==5){
+    if(loginString==7){
       return "User is rejected. Please enter correct details on next screen for reverification";
     }
-    if(stu==6){
+    if(loginString==8){
       return "User still waiting for verification";
+    }
+    
+    if(loginString==9){
+      return "The password you entered is incorrect";
+    }
+    if(loginString==5){
+      return "Student-login";
+    }
+    if(loginString==6){
+      return "Teacher-login";
+    }
+    if(loginString==10){
+      return "User is already logged in/Please sign out from other device";
     }
   }
 

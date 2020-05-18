@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class SubjectService {
 
-  private baseUrl="http://192.168.1.105:8322/subject/";
+  private baseUrl="http://192.168.1.107:8322/subject/";
   st:String;
 
   constructor(private http:HttpClient) { }
@@ -25,6 +25,10 @@ export class SubjectService {
   submitSSubjects(Subjects:Object):Observable<any>{
     console.log(JSON.stringify(Subjects));
     return this.http.post(`${this.baseUrl}`+'subjects-student-submit',JSON.stringify(Subjects),{responseType:'text'});
+  }
+
+  showSubjects():Observable<any>{
+    return this.http.get(`${this.baseUrl}`+'show-selected-subjects');
   }
 
 }

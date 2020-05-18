@@ -8,6 +8,8 @@ import { AddSubjectComponent } from './add-subject/add-subject.component';
 import { TeacherDataComponent } from './teacher-data/teacher-data.component';
 import { StudentDataComponent } from './student-data/student-data.component';
 import { StudentMenuComponent } from './student-menu/student-menu.component';
+import { TeacherMenuComponent } from './teacher-menu/teacher-menu.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 
 
 const routes: Routes = [
@@ -20,11 +22,26 @@ const routes: Routes = [
       {path:'add-subject',component:AddSubjectComponent}
     ]
   },
+  {
+    path:'student',
+    component:StudentMenuComponent,
+    children:[
+      {path:'student-data',component:StudentDataComponent},
+    ]
+  },
+  {
+    path:'teacher',
+    component:AdminMenuComponent,
+    children:[
+    ]
+  },
   {path:'register-user',component:RegisterUserComponent},
   {path:'admin-register',component:AdminRegisterComponent},
-  {path:'teacher-data',component:TeacherDataComponent},
   {path:'student-data',component:StudentDataComponent},
-  {path:'student-menu',component:StudentMenuComponent}
+  {path:'student-menu',component:StudentMenuComponent},
+  {path:'teacher-data',component:TeacherDataComponent},
+  {path:'teacher-menu',component:TeacherMenuComponent},
+  {path:'forget-password',component:ForgetpasswordComponent}
 ];
 
 @NgModule({

@@ -126,6 +126,7 @@ export class TeacherDataComponent implements OnInit {
             data;
             this.addResponse=data;
             alert(this.addResponse);
+            this.route.navigate(['teacher-menu']);
           }
         )
     }

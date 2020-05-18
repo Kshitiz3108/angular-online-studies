@@ -25,6 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { TeacherMenuComponent } from './teacher-menu/teacher-menu.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MatListModule } from '@angular/material/list';
     VerifyUserComponent,
     AdminRegisterComponent,
     AddSubjectComponent,
-    StudentMenuComponent
+    StudentMenuComponent,
+    TeacherMenuComponent,
+    ForgetpasswordComponent
   ],
   imports: [
     BrowserModule,

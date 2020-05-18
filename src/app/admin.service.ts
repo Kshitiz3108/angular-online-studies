@@ -8,7 +8,7 @@ import {Subject} from './subject';
 })
 export class AdminService {
 
-  private baseUrl="http://192.168.1.105:8322/admin/";
+  private baseUrl="http://192.168.1.107:8322/admin/";
   Sub:Subject[]=[];
   constructor(private http:HttpClient) { }
 

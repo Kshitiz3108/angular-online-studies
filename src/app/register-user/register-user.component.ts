@@ -73,13 +73,21 @@ export class RegisterUserComponent implements OnInit {
         this.loginresponse=data;
         this.loginvisibility=true;
         this.loginmessage=this.loginService.printer(this.loginresponse);
+        if(this.loginmessage==="Teacher-first-login"){
+          sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username));
+          this.route.navigate(['../teacher-data']);
+        }
+        if(this.loginmessage==="Student-first-login"){
+          sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username));
+          this.route.navigate(['../student-data']);
+        }
         if(this.loginmessage==="Teacher-login"){
           sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username));
           this.route.navigate(['../teacher-data']);
         }
         if(this.loginmessage==="Student-login"){
           sessionStorage.setItem("user-id",JSON.stringify(this.loginuser.username));
-          this.route.navigate(['../student-data']);
+          this.route.navigate(['../student-menu']);
         }
       }
     )
